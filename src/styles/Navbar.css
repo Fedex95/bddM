@@ -1,0 +1,37 @@
+/* Estilos generales para la barra de navegación */
+.navbar {
+    background-color: #333;  /* Fondo oscuro para la barra */
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    display: inline-block;  /* Asegura que los ítems estén en línea */
+    margin: 0 10px;         /* Espaciado entre los botones */
+}
+
+/* Estilo para los botones (links) */
+.navbar-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Color de fondo para los botones */
+    color: white;              /* Color del texto */
+    text-decoration: none;     /* Elimina el subrayado de los enlaces */
+    border-radius: 5px;        /* Bordes redondeados */
+    font-size: 16px;           /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
+}
+
+.navbar-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+.navbar-button:active {
+    background-color: #004085; /* Color cuando se hace clic */
+}

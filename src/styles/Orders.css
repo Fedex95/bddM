@@ -1,0 +1,25 @@
+body {
+    background-color: #a8dff8d2; 
+    font-family: Arial, sans-serif; 
+    margin: 0;  
+    padding: 0;  
+    min-height: 100vh;  
+}
+
+.orders-table {
+    width: 90%;
+    border-collapse: collapse; 
+    text-align: center; 
+    background-color: rgb(215, 247, 252);
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.orders-table th, .orders-table td {
+    padding: 8px;
+    border: 1px solid #070707; 
+}
+
+.orders-table th {
+    background-color: #ececece3; 
+}
