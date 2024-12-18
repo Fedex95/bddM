@@ -27,12 +27,52 @@ function ListOrders() {
     };
 
     const filterListOrders = orders.filter(order =>
-        order.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.orderID.toString().includes(searchQuery) ||
-        order.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        order.orderDate.toLowerCase().includes(searchQuery.toLowerCase())
+        order.customerName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.orderID?.toString().includes(searchQuery) ||
+        order.state?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.city?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.orderDate?.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const deleteOrder = async (orderID) => {
+        try {
+            const response = await fetch(`http://localhost:8080/listoforder/deleteList/${orderID}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                alert("Orden eliminada exitosamente");
+                setOrders(orders.filter(order => order.orderID !== orderID));
+            } else {
+                console.error('Error al eliminar la orden:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+        }
+    };
+
+    const editOrder = async (orderID) => {
+        const newName = prompt("Introduce el nuevo nombre del cliente:");
+        if (!newName) return;
+
+        try {
+            const response = await fetch(`http://localhost:8080/listoforder/editList/${orderID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ customerName: newName }),
+            });
+
+            if (response.ok) {
+                alert("Orden editada exitosamente");
+                fetchOrders(); 
+            } else {
+                console.error('Error al editar la orden:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+        }
+    };
 
     return (
         <div>
